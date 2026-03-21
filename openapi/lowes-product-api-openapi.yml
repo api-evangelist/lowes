@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Lowe's Product API
+  description: >-
+    The Lowe's Product API provides programmatic access to Lowe's home
+    improvement product catalog, inventory availability, pricing, and store
+    information. Built on Microsoft Azure API Management, the API enables
+    partners and developers to integrate with Lowe's retail operations for
+    ecommerce and supply chain use cases.
+  version: '1.0'
+servers:
+  - url: https://apis.lowes.com
+tags:
+  - name: Products
+    description: Search and retrieve product information.
+  - name: Inventory
+    description: Check product availability and stock levels.
+  - name: Stores
+    description: Access store location and information data.
+paths:
+  /products:
+    get:
+      operationId: listProducts
+      summary: List products
+      description: >-
+        Retrieves a list of products from the Lowe's catalog with filtering
+        by category, brand, price range, and other attributes.
+      tags:
+        - Products
+      parameters:
+        - name: category
+          in: query
+          description: Filter by product category.
+          schema:
+            type: string
+        - name: keyword
+          in: query
+          description: Search by keyword.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /inventory:
+    get:
+      operationId: listInventory
+      summary: List inventory
+      description: >-
+        Retrieves inventory availability for specified products at one or
+        more store locations.
+      tags:
+        - Inventory
+      parameters:
+        - name: productId
+          in: query
+          description: The product identifier.
+          required: true
+          schema:
+            type: string
+        - name: storeId
+          in: query
+          description: The store identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /stores:
+    get:
+      operationId: listStores
+      summary: List stores
+      description: >-
+        Retrieves a list of Lowe's store locations with address, hours,
+        and service information.
+      tags:
+        - Stores
+      parameters:
+        - name: zipCode
+          in: query
+          description: Filter stores by zip code proximity.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
