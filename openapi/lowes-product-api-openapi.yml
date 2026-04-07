@@ -11,10 +11,10 @@ info:
 servers:
   - url: https://apis.lowes.com
 tags:
-  - name: Products
-    description: Search and retrieve product information.
   - name: Inventory
     description: Check product availability and stock levels.
+  - name: Products
+    description: Search and retrieve product information.
   - name: Stores
     description: Access store location and information data.
 paths:

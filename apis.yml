@@ -1,16 +1,14 @@
 aid: lowes
-url: 
-  https://raw.githubusercontent.com/api-evangelist/lowes/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/lowes/refs/heads/main/apis.yml
 apis:
   - aid: lowes:product-api
     name: Lowe's Product API
     tags:
-      - Retail
+      - Ecommerce
       - Home Improvement
       - Products
-      - Ecommerce
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Retail
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://apis.lowes.com
     humanURL: https://portal.apim.lowes.com/
     properties:
