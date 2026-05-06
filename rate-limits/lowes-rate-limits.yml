@@ -4,85 +4,28 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Lowe's
 providerId: lowes
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Ecommerce
-  - Home Improvement
-  - Products
-  - Retail
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Lowe's API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Retail
+description: Lowe's does not publish a public rate-limit policy for apis.lowes.com. Limits are
+  governed by partner contract on a case-by-case basis. Replace with concrete numbers if a public
+  developer program publishes them.
+sources:
+  - https://www.lowes.com
+notes: No public rate-limits documentation was reachable at reconciliation time.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Lowe's Product API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Lowe's Product API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Lowe's Product API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Lowe's Product API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+  - name: Partner-contracted API requests
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Lowe's Product API
+    metric: varies
+    limit: 'see partner agreement'
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+  - name: Partner agreement scope
+    description: Steady-state and burst limits are defined in the partner agreement and may differ
+      by integration (supplier feed vs. fulfillment vs. marketplace).
+  - name: Backoff
+    description: On 429, retry with exponential backoff and respect Retry-After when present.
