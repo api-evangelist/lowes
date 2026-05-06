@@ -1,0 +1,181 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lowe's Product API
+  description: The Lowe's Product API provides programmatic access to Lowe's home improvement product catalog, inventory availability,
+    pricing, and store information. Built on Microsoft Azure API Management, the API enables partners and developers to integrate
+    with Lowe's retail operations for ecommerce and supply chain use cases.
+  tags:
+  - Lowes
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: lowes
+    baseUri: https://apis.lowes.com
+    description: Lowe's Product API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{LOWES_TOKEN}}'
+    resources:
+    - name: products
+      path: /products
+      operations:
+      - name: listproducts
+        method: GET
+        description: List products
+        inputParameters:
+        - name: category
+          in: query
+          type: string
+          description: Filter by product category.
+        - name: keyword
+          in: query
+          type: string
+          description: Search by keyword.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: inventory
+      path: /inventory
+      operations:
+      - name: listinventory
+        method: GET
+        description: List inventory
+        inputParameters:
+        - name: productId
+          in: query
+          type: string
+          required: true
+          description: The product identifier.
+        - name: storeId
+          in: query
+          type: string
+          description: The store identifier.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stores
+      path: /stores
+      operations:
+      - name: liststores
+        method: GET
+        description: List stores
+        inputParameters:
+        - name: zipCode
+          in: query
+          type: string
+          description: Filter stores by zip code proximity.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: lowes-rest
+    description: REST adapter for Lowe's Product API.
+    resources:
+    - path: /products
+      name: listproducts
+      operations:
+      - method: GET
+        name: listproducts
+        description: List products
+        call: lowes.listproducts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /inventory
+      name: listinventory
+      operations:
+      - method: GET
+        name: listinventory
+        description: List inventory
+        call: lowes.listinventory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /stores
+      name: liststores
+      operations:
+      - method: GET
+        name: liststores
+        description: List stores
+        call: lowes.liststores
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: lowes-mcp
+    transport: http
+    description: MCP adapter for Lowe's Product API for AI agent use.
+    tools:
+    - name: listproducts
+      description: List products
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lowes.listproducts
+      with:
+        category: tools.category
+        keyword: tools.keyword
+      inputParameters:
+      - name: category
+        type: string
+        description: Filter by product category.
+      - name: keyword
+        type: string
+        description: Search by keyword.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listinventory
+      description: List inventory
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lowes.listinventory
+      with:
+        productId: tools.productId
+        storeId: tools.storeId
+      inputParameters:
+      - name: productId
+        type: string
+        description: The product identifier.
+        required: true
+      - name: storeId
+        type: string
+        description: The store identifier.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: liststores
+      description: List stores
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: lowes.liststores
+      with:
+        zipCode: tools.zipCode
+      inputParameters:
+      - name: zipCode
+        type: string
+        description: Filter stores by zip code proximity.
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    LOWES_TOKEN: LOWES_TOKEN
