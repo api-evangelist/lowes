@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lowe's Product API — Products
+  description: 'Lowe''s Product API — Products. 1 operations. Lead operation: List products. Self-contained Naftiko capability
+    covering one Lowes business surface.'
+  tags:
+  - Lowes
+  - Products
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LOWES_API_KEY: LOWES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: product-products
+    baseUri: https://apis.lowes.com
+    description: Lowe's Product API — Products business capability. Self-contained, no shared references.
+    resources:
+    - name: products
+      path: /products
+      operations:
+      - name: listproducts
+        method: GET
+        description: List products
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: category
+          in: query
+          type: string
+          description: Filter by product category.
+        - name: keyword
+          in: query
+          type: string
+          description: Search by keyword.
+    authentication:
+      type: bearer
+      token: '{{env.LOWES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: product-products-rest
+    port: 8080
+    description: REST adapter for Lowe's Product API — Products. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/products
+      name: products
+      description: REST surface for products.
+      operations:
+      - method: GET
+        name: listproducts
+        description: List products
+        call: product-products.listproducts
+        with:
+          category: rest.category
+          keyword: rest.keyword
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: product-products-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lowe's Product API — Products. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-products
+      description: List products
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: product-products.listproducts
+      with:
+        category: tools.category
+        keyword: tools.keyword
+      outputParameters:
+      - type: object
+        mapping: $.

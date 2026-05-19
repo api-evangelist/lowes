@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lowe's Product API — Inventory
+  description: 'Lowe''s Product API — Inventory. 1 operations. Lead operation: List inventory. Self-contained Naftiko capability
+    covering one Lowes business surface.'
+  tags:
+  - Lowes
+  - Inventory
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LOWES_API_KEY: LOWES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: product-inventory
+    baseUri: https://apis.lowes.com
+    description: Lowe's Product API — Inventory business capability. Self-contained, no shared references.
+    resources:
+    - name: inventory
+      path: /inventory
+      operations:
+      - name: listinventory
+        method: GET
+        description: List inventory
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: productId
+          in: query
+          type: string
+          description: The product identifier.
+          required: true
+        - name: storeId
+          in: query
+          type: string
+          description: The store identifier.
+    authentication:
+      type: bearer
+      token: '{{env.LOWES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: product-inventory-rest
+    port: 8080
+    description: REST adapter for Lowe's Product API — Inventory. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/inventory
+      name: inventory
+      description: REST surface for inventory.
+      operations:
+      - method: GET
+        name: listinventory
+        description: List inventory
+        call: product-inventory.listinventory
+        with:
+          productId: rest.productId
+          storeId: rest.storeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: product-inventory-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lowe's Product API — Inventory. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-inventory
+      description: List inventory
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: product-inventory.listinventory
+      with:
+        productId: tools.productId
+        storeId: tools.storeId
+      outputParameters:
+      - type: object
+        mapping: $.
