@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lowe's Product API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.lowes.com/products",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by product category."
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Search by keyword."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of products from the Lowe's catalog with filtering by category, brand, price range, and other attributes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.lowes.com/inventory",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "The product identifier."
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "The store identifier."
+              }
+            ]
+          },
+          "docs": "Retrieves inventory availability for specified products at one or more store locations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.lowes.com/stores",
+            "params": [
+              {
+                "name": "zipCode",
+                "value": "",
+                "type": "query",
+                "description": "Filter stores by zip code proximity."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of Lowe's store locations with address, hours, and service information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

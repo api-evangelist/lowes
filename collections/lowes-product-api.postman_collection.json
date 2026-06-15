@@ -1,0 +1,284 @@
+{
+  "item": [
+    {
+      "id": "1615332e-1cbe-4846-8290-008043dbd3b6",
+      "name": "Inventory",
+      "description": {
+        "content": "Check product availability and stock levels.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc5586ab-266f-4040-9b26-289398f9f6f8",
+          "name": "List inventory",
+          "request": {
+            "name": "List inventory",
+            "description": {
+              "content": "Retrieves inventory availability for specified products at one or more store locations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productId",
+                  "value": "<string>",
+                  "description": "(Required) The product identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "The store identifier."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9945f7dc-0d94-43fb-959d-c310ec95a7ed",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "21b195f3-fdf5-42d1-bef7-5d3f75982e06",
+      "name": "Products",
+      "description": {
+        "content": "Search and retrieve product information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc81f45a-b1a3-4be9-ad1d-b779cff74254",
+          "name": "List products",
+          "request": {
+            "name": "List products",
+            "description": {
+              "content": "Retrieves a list of products from the Lowe's catalog with filtering by category, brand, price range, and other attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by product category."
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "Search by keyword."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bce21d5b-2448-4272-82cf-38f71e1cbef9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f166d9ef-bae9-490a-b3a2-85bd2cec395d",
+      "name": "Stores",
+      "description": {
+        "content": "Access store location and information data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "030b834a-50f3-44ef-9817-252a41977b86",
+          "name": "List stores",
+          "request": {
+            "name": "List stores",
+            "description": {
+              "content": "Retrieves a list of Lowe's store locations with address, hours, and service information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zipCode",
+                  "value": "<string>",
+                  "description": "Filter stores by zip code proximity."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3cd9e8f3-1a92-4fc9-bf1f-1455119e9385",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zipCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.lowes.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b5ca6125-bb01-4a9c-916e-72ce85937d87",
+    "name": "Lowe's Product API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Lowe's Product API provides programmatic access to Lowe's home improvement product catalog, inventory availability, pricing, and store information. Built on Microsoft Azure API Management, the API enables partners and developers to integrate with Lowe's retail operations for ecommerce and supply chain use cases.",
+      "type": "text/plain"
+    }
+  }
+}
