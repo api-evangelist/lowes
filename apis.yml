@@ -8,7 +8,7 @@ description: >-
 type: Index
 position: Provider
 access: 3rd-Party
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/lowes/refs/heads/main/apis.yml
 created: '2026-03-21'
 modified: '2026-05-19'
@@ -27,7 +27,7 @@ apis:
       on Microsoft Azure API Management, the Lowe's developer portal allows partners and developers to discover APIs,
       learn how to use them, test them interactively, and obtain API keys. The platform supports integration with Lowe's
       home improvement retail operations.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://portal.apim.lowes.com/
     baseURL: https://apis.lowes.com
     tags:
