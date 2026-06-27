@@ -42,7 +42,7 @@ apis:
         url: https://portal.apim.lowes.com/apis
       - type: OpenAPI
         url: openapi/lowes-product-api-openapi.yml
-      - type: SignUp
+      - type: Signup
         url: https://portal.apim.lowes.com/signup
       - type: Login
         url: https://portal.apim.lowes.com/signin
@@ -55,7 +55,7 @@ common:
     url: https://portal.apim.lowes.com/
   - type: Website
     url: https://www.lowes.com/
-  - type: SignUp
+  - type: Signup
     url: https://portal.apim.lowes.com/signup
   - type: Login
     url: https://portal.apim.lowes.com/signin
