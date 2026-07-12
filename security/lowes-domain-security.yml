@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: portal.apim.lowes.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb 16 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.lowes.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Mar  5 23:59:59 2027 GMT
+  hsts: null
+- host: apis.lowes.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Mar  5 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: lowes.com
+  dnssec: false
+  caa:
+  - 128 issuewild "sectigo.com"
+  - 128 issue "sectigo.com"
+  - 128 iodef "mailto:SSL_Certificate_Management@lowes.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

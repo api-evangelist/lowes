@@ -47,6 +47,10 @@ apis:
       - type: Login
         url: https://portal.apim.lowes.com/signin
 common:
+  - type: DomainSecurity
+    url: security/lowes-domain-security.yml
+  - type: Authentication
+    url: authentication/lowes-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/lowes
   - type: LinkedIn
