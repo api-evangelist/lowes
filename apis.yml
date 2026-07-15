@@ -47,6 +47,8 @@ apis:
       - type: Login
         url: https://portal.apim.lowes.com/signin
 common:
+  - type: AgenticAccess
+    url: agentic-access/lowes-agentic-access.yml
   - type: DomainSecurity
     url: security/lowes-domain-security.yml
   - type: Authentication
