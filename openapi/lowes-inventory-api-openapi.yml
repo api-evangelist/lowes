@@ -1,0 +1,38 @@
+openapi: 3.1.0
+info:
+  title: Lowe's Product Inventory API
+  description: The Lowe's Product API provides programmatic access to Lowe's home improvement product catalog, inventory availability, pricing, and store information. Built on Microsoft Azure API Management, the API enables partners and developers to integrate with Lowe's retail operations for ecommerce and supply chain use cases.
+  version: '1.0'
+servers:
+- url: https://apis.lowes.com
+tags:
+- name: Inventory
+  description: Check product availability and stock levels.
+paths:
+  /inventory:
+    get:
+      operationId: listInventory
+      summary: List inventory
+      description: Retrieves inventory availability for specified products at one or more store locations.
+      tags:
+      - Inventory
+      parameters:
+      - name: productId
+        in: query
+        description: The product identifier.
+        required: true
+        schema:
+          type: string
+      - name: storeId
+        in: query
+        description: The store identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
