@@ -6,9 +6,22 @@ description: >-
   pricing, and store APIs for integration with Lowe's retail operations. Discover APIs, learn how to use them, try them
   out interactively, and sign up to acquire keys.
 type: Index
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lowes.png
 url: https://raw.githubusercontent.com/api-evangelist/lowes/refs/heads/main/apis.yml
 created: '2026-03-21'
 modified: '2026-05-19'
@@ -20,32 +33,54 @@ tags:
   - Retail
   - Fortune 100
 apis:
-  - aid: lowes:product-api
-    name: Lowe's Product API
-    description: >-
-      The Lowe's Product API provides programmatic access to Lowe's product catalog, inventory, and pricing data. Built
-      on Microsoft Azure API Management, the Lowe's developer portal allows partners and developers to discover APIs,
-      learn how to use them, test them interactively, and obtain API keys. The platform supports integration with Lowe's
-      home improvement retail operations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://portal.apim.lowes.com/
-    baseURL: https://apis.lowes.com
-    tags:
-      - Ecommerce
-      - Home Improvement
-      - Inventory
-      - Products
-      - Retail
-      - Stores
-    properties:
-      - type: Documentation
-        url: https://portal.apim.lowes.com/apis
-      - type: OpenAPI
-        url: openapi/lowes-product-api-openapi.yml
-      - type: Signup
-        url: https://portal.apim.lowes.com/signup
-      - type: Login
-        url: https://portal.apim.lowes.com/signin
+- aid: lowes:lowes-inventory-api
+  name: Lowe's Inventory API
+  description: Check product availability and stock levels.
+  humanURL: https://portal.apim.lowes.com/
+  baseURL: https://apis.lowes.com
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/lowes-inventory-api-openapi.yml
+  - type: Documentation
+    url: https://portal.apim.lowes.com/apis
+  - type: Signup
+    url: https://portal.apim.lowes.com/signup
+  - type: Login
+    url: https://portal.apim.lowes.com/signin
+- aid: lowes:lowes-products-api
+  name: Lowe's Products API
+  description: Search and retrieve product information.
+  humanURL: https://portal.apim.lowes.com/
+  baseURL: https://apis.lowes.com
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/lowes-products-api-openapi.yml
+  - type: Documentation
+    url: https://portal.apim.lowes.com/apis
+  - type: Signup
+    url: https://portal.apim.lowes.com/signup
+  - type: Login
+    url: https://portal.apim.lowes.com/signin
+- aid: lowes:lowes-stores-api
+  name: Lowe's Stores API
+  description: Access store location and information data.
+  humanURL: https://portal.apim.lowes.com/
+  baseURL: https://apis.lowes.com
+  tags:
+  - Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/lowes-stores-api-openapi.yml
+  - type: Documentation
+    url: https://portal.apim.lowes.com/apis
+  - type: Signup
+    url: https://portal.apim.lowes.com/signup
+  - type: Login
+    url: https://portal.apim.lowes.com/signin
 common:
   - type: AgenticAccess
     url: agentic-access/lowes-agentic-access.yml
