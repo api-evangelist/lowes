@@ -1,0 +1,18 @@
+{
+  "provider": "lowes",
+  "sources": [
+    "lowes-inventory-api-openapi.yml",
+    "lowes-products-api-openapi.yml",
+    "lowes-stores-api-openapi.yml"
+  ],
+  "outputs": [
+    "lowes-inventory-api-openapi.yml",
+    "lowes-products-api-openapi.yml",
+    "lowes-stores-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
