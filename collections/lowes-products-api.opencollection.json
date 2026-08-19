@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lowe's Product Inventory Products API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.lowes.com/products",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by product category."
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "Search by keyword."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of products from the Lowe's catalog with filtering by category, brand, price range, and other attributes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

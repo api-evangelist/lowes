@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "057c0f33-c1cb-45e8-99dd-b90dfa070256",
+      "name": "Stores",
+      "description": {
+        "content": "Access store location and information data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e95ab069-f95d-42cb-90bd-10b02dca7c48",
+          "name": "List stores",
+          "request": {
+            "name": "List stores",
+            "description": {
+              "content": "Retrieves a list of Lowe's store locations with address, hours, and service information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zipCode",
+                  "value": "<string>",
+                  "description": "Filter stores by zip code proximity."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70c9de81-6a24-4335-99c5-6ab89759e174",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zipCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://apis.lowes.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f782d473-34fe-42c8-ae09-26bb227603da",
+    "name": "Lowe's Product Inventory Stores API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Lowe's Product API provides programmatic access to Lowe's home improvement product catalog, inventory availability, pricing, and store information. Built on Microsoft Azure API Management, the API enables partners and developers to integrate with Lowe's retail operations for ecommerce and supply chain use cases.",
+      "type": "text/plain"
+    }
+  }
+}
