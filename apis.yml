@@ -27,6 +27,12 @@ created: '2026-03-21'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
+  - E-Commerce
+  - Home Improvement
+  - Product
+  - Retail
+  - Fortune 100
+tags_raw:
   - Ecommerce
   - Home Improvement
   - Products
@@ -55,6 +61,8 @@ apis:
   humanURL: https://portal.apim.lowes.com/
   baseURL: https://apis.lowes.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
