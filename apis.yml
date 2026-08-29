@@ -102,6 +102,9 @@ apis:
   - type: Login
     url: https://portal.apim.lowes.com/signin
 common:
+  - type: CapabilityMap
+    url: capabilities/lowes-capability-edges.yml
+    name: Lowe's Business Capability Map
   - type: AgenticAccess
     url: agentic-access/lowes-agentic-access.yml
   - type: DomainSecurity
