@@ -1,7 +1,9 @@
 ---
 title: Chandhu Nair
 url: https://corporate.lowes.com/who-we-are/lowes-leadership/senior-leadership/chandhu-nair
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Lowe''s" press release artificial intelligence'
 position: 5
 source: serpapi-google

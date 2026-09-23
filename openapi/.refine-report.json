@@ -1,9 +1,7 @@
 {
   "provider": "lowes",
   "sources": [
-    "lowes-inventory-api-openapi.yml",
-    "lowes-products-api-openapi.yml",
-    "lowes-stores-api-openapi.yml"
+    "_original/lowes-product-api-openapi.yml"
   ],
   "outputs": [
     "lowes-inventory-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "lowes-product-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "lowes-inventory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lowes-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lowes-stores-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,7 +1,9 @@
 ---
 title: Lowe's puts project expertise into every hand
 url: https://openai.com/index/lowes/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Lowe''s" press release artificial intelligence'
 position: 4
 source: serpapi-google
