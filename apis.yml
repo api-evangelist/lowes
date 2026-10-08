@@ -103,6 +103,12 @@ apis:
   - type: Login
     url: https://portal.apim.lowes.com/signin
 common:
+  - type: Plans
+    url: plans/lowes-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/lowes-rate-limits.yml
+  - type: FinOps
+    url: finops/lowes-finops.yml
   - type: CapabilityMap
     url: capabilities/lowes-capability-edges.yml
     name: Lowe's Business Capability Map
