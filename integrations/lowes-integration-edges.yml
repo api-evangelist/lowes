@@ -8,7 +8,6 @@ checked:
 - https://n8n.io/integrations/lowes/
 - https://zapier.com/apps/lowe-s/integrations
 - https://zapier.com/apps/lowes/integrations
-- procore/integrations/procore-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: monid
@@ -16,22 +15,5 @@ marketplace_apps:
   app: lowes
   url: https://monid.ai/tools/lowes
   identity: slug
-edges:
-- partner_name: Procore (own)
-  partner: procore
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.procore.com/apps/lowe-s
-  mirror_of: procore/integrations/procore-integration-edges.yml
-  apps:
-  - Lowe's
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Estimating & Takeoff; Procurement & Materials Management; Resource Management
+edges: []
 templates: []
